@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine"
+    ]
+  },
+  "files": [
+    "./test.ts",
+    "./apps/apex-ui/src/polyfills.ts"
+  ],
+  "include": [
+    "./libs/**/*.spec.ts",
+    "./libs/**/*.d.ts",
+    "./libs/**/*.ts"
+  ]
+}

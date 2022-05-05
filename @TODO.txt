@@ -1,0 +1,30 @@
+1. Better Modularization - Reduce spaghetti
+-- Functional and presentational seperation. For example Auth module contains both the presentaion of auth page as well as the functional utilities for authentication. auth utilities should be packaged and imported into auth container module.
+
+
+
+2. Enable verbose fullTemplateTypeCheck
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+  },
+-- shows more issues and will eventaully be turned on by default - enable and fix all the prod build errors so we aren't surpised by it in a future version of angular.
+
+
+
+3. Begin IVY compiler migration - add ngc and see what kind of legwork we have to do 
+  "angularCompilerOptions": {
+    "enableIvy": true
+  },
+-- This will help really trim the production fat, but we may need to further shift our development paradigm to take advantage of the tooling
+
+
+
+4. Consider MPA with lazy loading over SPA with lazy loading
+-- While lazy loading works great on small apps - there is nothing preventing a user from visiting many pages of the app and loading everything into memory.
+-- By breaking the app into logical chunks we can ensure the user has a chance to flush between large sections of the app.
+-- When a user navigates between these hypothetical app sections the browser has a chance to drop unused assets from memory. 
+-- Shared assets would be loaded from the browsers fetch cache, new assets would be retrieved from the server on first load, and then subsequent non-initial assets would be lazy loaded as needed as part of that app section.
+
+
+
+5. 

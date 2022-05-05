@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "tmp",
+    "documentation",
+    "dist",
+    "extra-webpack.config.js",
+    "karma.conf.js",
+    "ngcc.conf.js",
+    "protractor.conf.js",
+    "proxy.conf.js",
+    "test.ts"
+  ]
+}

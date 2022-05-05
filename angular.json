@@ -1,0 +1,981 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "apex-ui": {
+      "root": "apps/apex-ui",
+      "sourceRoot": "apps/apex-ui/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "deployUrl": "/",
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "jexl",
+              "moment-timezone",
+              "rxjs",
+              "hammerjs"
+            ],
+            "outputPath": "dist/apps/apex-ui",
+            "index": "apps/apex-ui/src/index.html",
+            "main": "apps/apex-ui/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/apex-ui/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/apex-ui/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "apex-ui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "apex-ui:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "apex-ui:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "./test.ts",
+            "polyfills": "apps/apex-ui/src/polyfills.ts",
+            "tsConfig": "./tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/apex-ui/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ]
+          }
+        }
+      }
+    },
+    "card": {
+      "root": "apps/card",
+      "sourceRoot": "apps/card/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/card",
+            "index": "apps/card/src/index.html",
+            "main": "apps/card/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/card/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/card/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/css/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "card:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "card:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "card:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        }
+      }
+    },
+    "casemanager": {
+      "root": "apps/casemanager",
+      "sourceRoot": "apps/casemanager/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/casemanager",
+            "index": "apps/casemanager/src/index.html",
+            "main": "apps/casemanager/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/casemanager/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/casemanager/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/css/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "casemanager:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "casemanager:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "casemanager:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        }
+      }
+    },
+    "cims": {
+      "root": "apps/cims",
+      "sourceRoot": "apps/cims/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/cims",
+            "index": "apps/cims/src/index.html",
+            "main": "apps/cims/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/cims/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/cims/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/css/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "cims:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "cims:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "cims:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        }
+      }
+    },
+    "contact": {
+      "root": "apps/contact",
+      "sourceRoot": "apps/contact/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/contact",
+            "index": "apps/contact/src/index.html",
+            "main": "apps/contact/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/contact/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/contact/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/css/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "contact:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "contact:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "contact:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        }
+      }
+    },
+    "dashboard": {
+      "root": "apps/dashboard",
+      "sourceRoot": "apps/dashboard/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/dashboard",
+            "index": "apps/dashboard/src/index.html",
+            "main": "apps/dashboard/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/dashboard/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/dashboard/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/css/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dashboard:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dashboard:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dashboard:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        }
+      }
+    },
+    "fraud": {
+      "root": "apps/fraud",
+      "sourceRoot": "apps/fraud/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/fraud",
+            "index": "apps/fraud/src/index.html",
+            "main": "apps/fraud/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/fraud/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/fraud/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/css/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "fraud:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fraud:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fraud:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        }
+      }
+    },
+    "globalsearch": {
+      "root": "apps/globalsearch",
+      "sourceRoot": "apps/globalsearch/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/globalsearch",
+            "index": "apps/globalsearch/src/index.html",
+            "main": "apps/globalsearch/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/globalsearch/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/globalsearch/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/css/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "globalsearch:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "globalsearch:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "globalsearch:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        }
+      }
+    },
+    "terminal": {
+      "root": "apps/terminal",
+      "sourceRoot": "apps/terminal/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/terminal",
+            "index": "apps/terminal/src/index.html",
+            "main": "apps/terminal/src/main.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "polyfills": "apps/terminal/src/polyfills.ts",
+            "assets": [
+              {
+                "input": "libs/assets",
+                "glob": "**/*",
+                "ignore": ["**/*.scss"],
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "./libs/assets/scss/vendor.scss",
+              "./apps/terminal/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/assets/scss/",
+                "libs/assets/css/",
+                "libs/"
+              ]
+            },
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "libs/environments/environment.ts",
+                  "with": "libs/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "terminal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "terminal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "terminal:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/**/*.ts",
+              "apps/**/*.component.html",
+              "libs/**/*.ts",
+              "libs/**/*.component.html",
+              "packages/**/*.ts",
+              "packages/**/*.component.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "apex-ui",
+  "schematics": {
+    "@nrwl/schematics:component": {
+      "prefix": "apex",
+      "styleext": "scss"
+    },
+    "@nrwl/schematics:directive": {
+      "prefix": "apex"
+    }
+  },
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    },
+    "packageManager": "npm",
+    "analytics": false
+  }
+}

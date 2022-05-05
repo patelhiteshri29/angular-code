@@ -1,0 +1,48 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "allowJs": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "paths": {
+      "@apex-ui/*": [
+        "libs/*"
+      ],
+      "@apex/*": [
+        "packages/*"
+      ],
+      "moment": [
+        "node_modules/moment/min/moment.min.js"
+      ],
+      "moment-timezone": [
+        "node_modules/moment-timezone/builds/moment-timezone-with-data-2012-2022.min.js"
+      ],
+      "jexl": [
+        "packages/jexl/lib/Jexl.js"
+      ],
+      "jexl/*": [
+        "packages/jexl/lib/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true
+  }
+}
